@@ -30,16 +30,28 @@ public class UsuarioBean {
 	private int telefono;
 
 	
-	@OneToMany
-	private List<EjemplarBean> ejemplares = new ArrayList<EjemplarBean>();
 	
+	@OneToMany(mappedBy="usuario")
+	private List<SacarBean> sacar_usuario = new ArrayList<SacarBean>();
 	
-	public List<EjemplarBean> getEjemplares() {
-		return ejemplares;
+	public void addSacarUsuario(SacarBean sacar) {
+		
+		if(!sacar_usuario.contains(sacar)) {
+			
+			sacar_usuario.add(sacar);
+			sacar.setUsuario(this);
+		}
+	}
+	
+
+	
+
+	public List<SacarBean> getSacar_usuario() {
+		return sacar_usuario;
 	}
 
-	public void setEjemplares(List<EjemplarBean> ejemplares) {
-		this.ejemplares = ejemplares;
+	public void setSacar_usuario(List<SacarBean> sacar_usuario) {
+		this.sacar_usuario = sacar_usuario;
 	}
 
 	public long getCod_usuario() {

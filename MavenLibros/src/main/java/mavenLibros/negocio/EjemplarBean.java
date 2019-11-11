@@ -31,19 +31,33 @@ public class EjemplarBean {
 	private LibroBean libro;
 	
 	
-	@OneToMany
-	private List<UsuarioBean> usuarios = new ArrayList<UsuarioBean>();
+	
+	@OneToMany(mappedBy="ejemplar")
+	private List<SacarBean> sacar_ejemplares = new ArrayList<SacarBean>();
+	
+	
+	public void addSacarEjemplar(SacarBean sacar) {
+		
+		if(!sacar_ejemplares.contains(sacar)) {
+			
+			sacar_ejemplares.add(sacar);
+			sacar.setEjemplar(this);
+		}
+	}
 	
 	
 	
 	
-	public List<UsuarioBean> getUsuarios() {
-		return usuarios;
+
+	public List<SacarBean> getSacar_ejemplares() {
+		return sacar_ejemplares;
 	}
 
-	public void setUsuarios(List<UsuarioBean> usuarios) {
-		this.usuarios = usuarios;
+
+	public void setSacar_ejemplares(List<SacarBean> sacar_ejemplares) {
+		this.sacar_ejemplares = sacar_ejemplares;
 	}
+
 
 	public LibroBean getLibro() {
 		return libro;

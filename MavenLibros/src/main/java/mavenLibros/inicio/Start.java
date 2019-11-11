@@ -1,8 +1,14 @@
 package mavenLibros.inicio;
 
+import mavenLibros.modelo.autor.CreateAutor;
+import mavenLibros.modelo.ejemplar.CreateEjemplar;
+import mavenLibros.modelo.libro.CreateLibro;
+import mavenLibros.modelo.sacar.CreateSacar;
+import mavenLibros.modelo.usuario.CreateUsuario;
 import mavenLibros.negocio.AutorBean;
 import mavenLibros.negocio.EjemplarBean;
 import mavenLibros.negocio.LibroBean;
+import mavenLibros.negocio.SacarBean;
 import mavenLibros.negocio.UsuarioBean;
 
 public class Start {
@@ -35,14 +41,37 @@ public class Start {
 		cris.setDireccion("Calle Covadonga, Mieres");
 		cris.setTelefono(987654321);
 		
+		SacarBean sacar1 = new SacarBean();
+		sacar1.setFecha_prestamo("12/05/2019");
+		sacar1.setFecha_devolucion("05/07/2019");
+		
+		
 		king.addLibros(it);
 		king.addLibros(carrie);
 		
 		it.addEjemplares(ej1);
 		carrie.addEjemplares(ej2);
 		
+		ej1.addSacarEjemplar(sacar1);
 		
+		cris.addSacarUsuario(sacar1);
 		
+		CreateAutor createAutor = new CreateAutor();
+		createAutor.create(king);
+		
+		CreateLibro createLibro = new CreateLibro();
+		createLibro.create(it);
+		createLibro.create(carrie);
+		
+		CreateEjemplar createEjemplar = new CreateEjemplar();
+		createEjemplar.create(ej1);
+		createEjemplar.create(ej2);
+		
+		CreateUsuario createUsuario = new CreateUsuario();
+		createUsuario.create(cris);
+		
+		CreateSacar createSacar = new CreateSacar();
+		createSacar.create(sacar1);
 	}
 
 }
