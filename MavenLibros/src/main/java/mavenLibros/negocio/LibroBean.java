@@ -113,6 +113,18 @@ public class LibroBean {
 	public void setPaginas(int paginas) {
 		this.paginas = paginas;
 	}
+
+
+
+	public void add(AutorBean autorBean) {
+
+		if(!autores.contains(autorBean)) {
+			
+			autores.add(autorBean);
+			autorBean.addLibros(this); //le añade este libro
+		}
+		
+	}
 	
 	
 }

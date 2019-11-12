@@ -34,12 +34,15 @@ public class AutorBean {
 		if(!libros.contains(libro)) {
 			
 			libros.add(libro);
+			libro.add(this); //al libro le metes el autor
 			
+			/*
 			List<AutorBean> autores = libro.getAutores();
 			if(!autores.contains(this)) {
 				
 				autores.add(this);
 			}
+			*/
 		}
 	}
 	
