@@ -1,9 +1,9 @@
 package mavenLibros.negocio;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -11,13 +11,14 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="ejemplar_usuario")
-public class SacarBean {
+public class SacarBean implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column
-	private long sacar;
-	
 	@Column
 	private String fecha_prestamo;
 	
@@ -25,12 +26,13 @@ public class SacarBean {
 	private String fecha_devolucion;
 
 	
-	
+	@Id
 	@ManyToOne
 	@JoinColumn(name="FK_ejemplar")
 	private EjemplarBean ejemplar;
 	
 	
+	@Id
 	@ManyToOne
 	@JoinColumn(name="FK_usuario")
 	private UsuarioBean usuario;
@@ -53,14 +55,6 @@ public class SacarBean {
 		this.ejemplar = ejemplar;
 	}
 
-	public long getSacar() {
-		return sacar;
-	}
-
-	public void setSacar(long sacar) {
-		this.sacar = sacar;
-	}
-
 	public String getFecha_prestamo() {
 		return fecha_prestamo;
 	}
@@ -76,8 +70,6 @@ public class SacarBean {
 	public void setFecha_devolucion(String fecha_devolucion) {
 		this.fecha_devolucion = fecha_devolucion;
 	}
-	
-	
-	
+		
 	
 }

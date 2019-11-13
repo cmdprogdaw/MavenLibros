@@ -52,8 +52,8 @@ public class Start {
 		it.addEjemplares(ej1);
 		carrie.addEjemplares(ej2);
 		
+		//enlazo extraccion 1
 		ej1.addSacarEjemplar(sacar1);
-		
 		cris.addSacarUsuario(sacar1);
 		
 		CreateAutor createAutor = new CreateAutor();
